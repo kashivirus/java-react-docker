@@ -1,0 +1,33 @@
+version: '3'
+services:
+    mongodb:
+      image: mongo:latest
+      ports:
+        - 27017:27017
+      container_name: mongodb
+      restart: always
+      volumes:
+        - my-db:/data/db
+
+    frontend:
+      build:
+        context: ./app
+        dockerfile: Dockerfile
+      image: app
+      ports:
+        - 3000:3000
+      container_name: frontend
+      restart: always
+
+    spring-bot:
+      build: 
+        context: ./web
+        dockerfile: Dockerfile
+      image: spring-bot
+      ports:
+        - 8080:8080
+      container_name: spring-bot
+
+volumes:
+     my-db:
+        driver: local
