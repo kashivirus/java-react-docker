@@ -2,7 +2,7 @@
 
 
 To build
-` mvn exec:java `
+` ./mvnw clean install `
 
 
 Start SpringBoot Project
